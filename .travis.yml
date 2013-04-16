@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - openjdk6
+script: "mvn clean install"
+notifications:
+  email:
+    recipients:
+      - toda_k@worksap.co.jp
