@@ -4,8 +4,8 @@
   provider="Works Applications" website="https://github.com/WorksApplications/findbugs-plugin">
 
   <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass"
-    speed="fast" reports="SLF4J_ILLEGAL_PASSED_CLASS" hidden="false" />
-  <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SLF4J"
+    speed="fast" hidden="false" />
+  <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
     category="CORRECTNESS" />
 
 </FindbugsPlugin>
