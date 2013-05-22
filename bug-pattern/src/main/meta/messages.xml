@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+
+  <Plugin>
+    <ShortDescription>Works Applications Findbugs plugin</ShortDescription>
+    <Details>This plugin provides detector for some common bugs</Details>
+  </Plugin>
+
+  <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass">
+    <Details>
+      we can not use System.out, please use log to output
+      information
+    </Details>
+  </Detector>
+
+  <BugPattern type="FORBIDDEN_SYSTEM">
+    <ShortDescription>code for publish can not use System.out
+    </ShortDescription>
+    <LongDescription>{1}we can not use System.out, please use log to
+      output information
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>System.out and System.err are forbidden，please use log</p>  
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <BugCode abbrev="SYS">SYS</BugCode>
+</MessageCollection>
