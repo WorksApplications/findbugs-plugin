@@ -9,7 +9,7 @@
 
   <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass">
     <Details>
-      we can not use System.out, please use log to output
+      we can not use System.out and System.err, please use log to output
       information
     </Details>
   </Detector>
@@ -17,12 +17,12 @@
   <BugPattern type="FORBIDDEN_SYSTEM">
     <ShortDescription>code for publish can not use System.out
     </ShortDescription>
-    <LongDescription>{1}we can not use System.out, please use log to
+    <LongDescription>we can not use System.out and System.err, please use log to
       output information
     </LongDescription>
     <Details>  
   <![CDATA[
-    <p>System.out and System.err are forbidden，please use log</p>  
+    <p>System.out and System.err are forbidden, please use log</p>
   ]]>
     </Details>
   </BugPattern>
