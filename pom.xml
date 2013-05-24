@@ -4,7 +4,7 @@
   <artifactId>findbugs</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <url>https://github.com/WorksApplications/findbugs-plugin</url>
-  <description>WorksApplications Findbugs</description>
+  <description>WorksApplications Findbugs plugin set</description>
   <packaging>pom</packaging>
   <modules>
     <module>bug-pattern</module>
