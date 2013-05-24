@@ -3,7 +3,7 @@
   <parent>
     <groupId>jp.co.worksap.oss</groupId>
     <artifactId>findbugs</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>bug-pattern</artifactId>
   <url>https://github.com/WorksApplications/findbugs-plugin</url>
