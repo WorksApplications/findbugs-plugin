@@ -8,7 +8,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>bug-pattern</module>
-    <module>test-case</module>
   </modules>
   <scm>
     <connection>scm:git:git@github.com:WorksApplications/findbugs-plugin.git</connection>

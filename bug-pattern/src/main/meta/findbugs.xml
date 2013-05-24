@@ -6,6 +6,6 @@
   <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass"
     speed="fast" hidden="false" />
   <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
-    category="CORRECTNESS" />
+    category="BAD_PRACTICE" />
 
 </FindbugsPlugin>
