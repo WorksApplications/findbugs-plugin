@@ -9,13 +9,21 @@ import edu.umd.cs.findbugs.BugReporter;
 public class ForbiddenSystemDetectorTest {
 
     @Test
-    public void testBug() throws Exception {
+    public void testUseSystemOutBug() throws Exception {
         BugReporter bugReporter = DetectorAssert.bugReporterForTesting();
         ForbiddenSystemClass detector = new ForbiddenSystemClass(bugReporter);
 
-        DetectorAssert.assertBugReported(UseSystemClass.class, detector,
+        DetectorAssert.assertBugReported(UseSystemOut.class, detector,
                 bugReporter);
     }
 
+    @Test
+    public void testUseSystemErrBug() throws Exception {
+        BugReporter bugReporter = DetectorAssert.bugReporterForTesting();
+        ForbiddenSystemClass detector = new ForbiddenSystemClass(bugReporter);
+
+        DetectorAssert.assertBugReported(UseSystemErr.class, detector,
+                bugReporter);
+    }
 
 }
