@@ -67,12 +67,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.9.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.youdevise</groupId>
       <artifactId>test-driven-detectors4findbugs</artifactId>
       <version>0.2.1</version>
