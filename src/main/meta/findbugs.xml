@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="jp.co.worksap.oss.findbugs"
+  provider="Works Applications" website="https://github.com/WorksApplications/findbugs-plugin">
+
+  <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass"
+    speed="fast" hidden="false" />
+  <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
+    category="BAD_PRACTICE" />
+
+</FindbugsPlugin>
