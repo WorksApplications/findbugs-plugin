@@ -27,7 +27,6 @@ public class ForbiddenSystemClass extends OpcodeStackDetector {
                 BugInstance bug = new BugInstance(this, "FORBIDDEN_SYSTEM",
                         NORMAL_PRIORITY).addClassAndMethod(this).addSourceLine(
                         this, getPC());
-                bug.addInt(getPC());
                 bugReporter.reportBug(bug);
             }
         }
