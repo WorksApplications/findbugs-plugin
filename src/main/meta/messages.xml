@@ -27,5 +27,26 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.orm.LongIndexNameDetector">
+    <Details>
+      Oracle database has limitation for length of index name.
+      We have to care this limitation when we make index.
+    </Details>
+  </Detector>
+
+  <BugPattern type="LONG_INDEX_NAME">
+    <ShortDescription>Index name should be shorter than or equal to 30 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Index name should be shorter than or equal to 30 bytes.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Index name should be shorter than or equal to 30 bytes.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
+  <BugCode abbrev="ORM">ORM</BugCode>
 </MessageCollection>
