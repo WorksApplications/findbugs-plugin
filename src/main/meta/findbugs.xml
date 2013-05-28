@@ -8,4 +8,9 @@
   <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
     category="BAD_PRACTICE" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.orm.LongIndexNameDetector"
+  	speed="fast" hidden="false" />
+  <BugPattern type="LONG_INDEX_NAME" abbrev="ORM"
+    category="BAD_PRACTICE" />
+
 </FindbugsPlugin>
