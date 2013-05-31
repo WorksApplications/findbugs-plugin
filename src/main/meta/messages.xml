@@ -27,5 +27,38 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jsr305.BrokenImmutableClassDetector">
+    <Details>
+      To ensure immutability, class which is annotated with @Immutable should be final.
+      And all field in this class should be final too.
+    </Details>
+  </Detector>
+
+  <BugPattern type="IMMUTABLE_CLASS_SHOULD_BE_FINAL">
+    <ShortDescription>Immutable class should be final.
+    </ShortDescription>
+    <LongDescription>To prevent from bad extending, immutable class should be final.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>To prevent from bad extending, immutable class should be final.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <BugPattern type="BROKEN_IMMUTABILITY">
+    <ShortDescription>Field of immutable class should be final.
+    </ShortDescription>
+    <LongDescription>
+      Field of immutable class should be final.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Field of immutable class should be final.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
+  <BugCode abbrev="JSR305">JSR305</BugCode>
 </MessageCollection>
