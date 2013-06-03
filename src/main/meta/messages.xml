@@ -50,7 +50,7 @@
     <ShortDescription>Field of immutable class should be final.
     </ShortDescription>
     <LongDescription>
-      Field of immutable class should be final.
+      {1}
     </LongDescription>
     <Details>  
   <![CDATA[

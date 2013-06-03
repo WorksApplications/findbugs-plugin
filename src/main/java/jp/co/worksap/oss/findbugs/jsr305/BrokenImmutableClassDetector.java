@@ -47,7 +47,7 @@ public class BrokenImmutableClassDetector extends AnnotationDetector {
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("Cannot find super class of " + targetClass.getClassName() + ". Check classpath.", e);
         } catch (NonImmutableException e) {
-            reporter.reportBug(new BugInstance(this, "BROKEN_IMMUTABILITY", HIGH_PRIORITY).addClass(this));
+            reporter.reportBug(new BugInstance(this, "BROKEN_IMMUTABILITY", HIGH_PRIORITY).addClass(this).addString(e.getMessage()));
         }
     }
 
@@ -80,8 +80,8 @@ public class BrokenImmutableClassDetector extends AnnotationDetector {
         public String getMessage() {
             return String.format(
                     "Field (%s) in class (%s) should be final to make this class immutable.",
-                    mutableClass.getClassName(),
-                    mutableField.getName());
+                    mutableField.getName(),
+                    mutableClass.getClassName());
         }
     }
 }
