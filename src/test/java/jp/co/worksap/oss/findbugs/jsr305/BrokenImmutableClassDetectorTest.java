@@ -3,6 +3,7 @@ package jp.co.worksap.oss.findbugs.jsr305;
 import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.assertBugReported;
 import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.assertNoBugsReported;
 import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.bugReporterForTesting;
+import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.ofType;
 
 import javax.annotation.meta.When;
 
@@ -44,7 +45,8 @@ public class BrokenImmutableClassDetectorTest {
 
     @Test(expected = NonImmutableException.class)
     public void testMutableClass() throws Exception {
-        assertBugReported(MutableClass.class, detector, bugReporter);
+        assertBugReported(MutableClass.class, detector, bugReporter, ofType("IMMUTABLE_CLASS_SHOULD_BE_FINAL"));
+        assertBugReported(MutableClass.class, detector, bugReporter, ofType("BROKEN_IMMUTABILITY"));
 
         JavaClass mutableClass = Repository.lookupClass(MutableClass.class);
         detector.checkImmutability(mutableClass);
@@ -52,7 +54,7 @@ public class BrokenImmutableClassDetectorTest {
 
     @Test(expected = NonImmutableException.class)
     public void testClassExtendsMutableClass() throws Exception {
-        assertBugReported(ExtendsMutableClass.class, detector, bugReporter);
+        assertBugReported(ExtendsMutableClass.class, detector, bugReporter, ofType("BROKEN_IMMUTABILITY"));
 
         JavaClass mutableClass = Repository.lookupClass(ExtendsMutableClass.class);
         detector.checkImmutability(mutableClass);
