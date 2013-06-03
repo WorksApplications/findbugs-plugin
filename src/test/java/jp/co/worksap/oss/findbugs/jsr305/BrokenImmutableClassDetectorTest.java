@@ -7,10 +7,6 @@ import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.ofType;
 
 import javax.annotation.meta.When;
 
-import jp.co.worksap.oss.findbugs.jsr305.BrokenImmutableClassDetector.NonImmutableException;
-
-import org.apache.bcel.Repository;
-import org.apache.bcel.classfile.JavaClass;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,33 +26,21 @@ public class BrokenImmutableClassDetectorTest {
     @Test
     public void testObjectIsImmutable() throws Exception {
         assertNoBugsReported(Object.class, detector, bugReporter);
-
-        JavaClass objectClass = Repository.lookupClass(Object.class);
-        detector.checkImmutability(objectClass);
     }
 
     @Test
     public void testEnumIsImmutable() throws Exception {
         assertNoBugsReported(When.class, detector, bugReporter);
-
-        JavaClass enumClass = Repository.lookupClass(When.class);
-        detector.checkImmutability(enumClass);
     }
 
-    @Test(expected = NonImmutableException.class)
+    @Test
     public void testMutableClass() throws Exception {
         assertBugReported(MutableClass.class, detector, bugReporter, ofType("IMMUTABLE_CLASS_SHOULD_BE_FINAL"));
         assertBugReported(MutableClass.class, detector, bugReporter, ofType("BROKEN_IMMUTABILITY"));
-
-        JavaClass mutableClass = Repository.lookupClass(MutableClass.class);
-        detector.checkImmutability(mutableClass);
     }
 
-    @Test(expected = NonImmutableException.class)
+    @Test
     public void testClassExtendsMutableClass() throws Exception {
         assertBugReported(ExtendsMutableClass.class, detector, bugReporter, ofType("BROKEN_IMMUTABILITY"));
-
-        JavaClass mutableClass = Repository.lookupClass(ExtendsMutableClass.class);
-        detector.checkImmutability(mutableClass);
     }
 }

@@ -6,7 +6,6 @@ import org.apache.bcel.classfile.ElementValue;
 import org.apache.bcel.classfile.Field;
 import org.apache.bcel.classfile.JavaClass;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 
 import edu.umd.cs.findbugs.BugInstance;
@@ -39,49 +38,29 @@ public class BrokenImmutableClassDetector extends AnnotationDetector {
         }
 
         JavaClass targetClass = getThisClass();
+        if (!targetClass.isFinal()) {
+            reporter.reportBug(new BugInstance(this, "IMMUTABLE_CLASS_SHOULD_BE_FINAL", HIGH_PRIORITY).addClass(this));
+        }
+
         try {
-            if (!targetClass.isFinal()) {
-                reporter.reportBug(new BugInstance(this, "IMMUTABLE_CLASS_SHOULD_BE_FINAL", HIGH_PRIORITY).addClass(this));
-            }
             checkImmutability(targetClass);
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("Cannot find super class of " + targetClass.getClassName() + ". Check classpath.", e);
-        } catch (NonImmutableException e) {
-            reporter.reportBug(new BugInstance(this, "BROKEN_IMMUTABILITY", HIGH_PRIORITY).addClass(this).addString(e.getMessage()));
         }
     }
 
-    @VisibleForTesting
-    void checkImmutability(JavaClass immutableClass) throws ClassNotFoundException, NonImmutableException {
+    private void checkImmutability(JavaClass immutableClass) throws ClassNotFoundException {
         if (immutableClass == null) {
             return;
         }
         for (Field field : immutableClass.getFields()) {
             if (!field.isStatic() && !field.isFinal()) {
-                throw new NonImmutableException(immutableClass, field);
+                reporter.reportBug(new BugInstance(this, "BROKEN_IMMUTABILITY", HIGH_PRIORITY)
+                        .addString(getThisClass().getClassName())
+                        .addString(field.getName())
+                        .addString(immutableClass.getClassName()));
             }
         }
         checkImmutability(immutableClass.getSuperClass());
-    }
-
-    @VisibleForTesting
-    static class NonImmutableException extends Exception {
-        private static final long serialVersionUID = 1446366298718611525L;
-
-        private final JavaClass mutableClass;
-        private final Field mutableField;
-
-        NonImmutableException(JavaClass mutableClass, Field mutableField) {
-            this.mutableClass = mutableClass;
-            this.mutableField = mutableField;
-        }
-
-        @Override
-        public String getMessage() {
-            return String.format(
-                    "Field (%s) in class (%s) should be final to make this class immutable.",
-                    mutableField.getName(),
-                    mutableClass.getClassName());
-        }
     }
 }
