@@ -8,4 +8,10 @@
   <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
     category="BAD_PRACTICE" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.jsr305.BrokenImmutableClassDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="IMMUTABLE_CLASS_SHOULD_BE_FINAL" abbrev="JSR305"
+    category="CORRECTNESS" />
+  <BugPattern type="BROKEN_IMMUTABILITY" abbrev="JSR305"
+    category="CORRECTNESS" />
 </FindbugsPlugin>
