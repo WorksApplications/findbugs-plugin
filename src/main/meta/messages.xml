@@ -59,6 +59,67 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongIndexNameDetector">
+    <Details>
+      Oracle database has limitation for length of index name.
+      We have to care this limitation when we make index.
+    </Details>
+  </Detector>
+
+  <BugPattern type="LONG_INDEX_NAME">
+    <ShortDescription>Index name should be shorter than or equal to 30 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Index name should be shorter than or equal to 30 bytes.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Index name should be shorter than or equal to 30 bytes.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongTableNameDetector">
+    <Details>
+      Oracle database has limitation for length of table name.
+      We have to care this limitation when we make entity.
+    </Details>
+  </Detector>
+
+  <BugPattern type="LONG_TABLE_NAME">
+    <ShortDescription>Table name should be shorter than or equal to 30 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Table name should be shorter than or equal to 30 bytes.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Table name should be shorter than or equal to 30 bytes.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongColumnNameDetector">
+    <Details>
+      Oracle database has limitation for length of column name.
+      We have to care this limitation when we make entity.
+    </Details>
+  </Detector>
+
+  <BugPattern type="LONG_COLUMN_NAME">
+    <ShortDescription>Column name should be shorter than or equal to 30 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Column name should be shorter than or equal to 30 bytes.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Column name should be shorter than or equal to 30 bytes.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
   <BugCode abbrev="JSR305">JSR305</BugCode>
+  <BugCode abbrev="JPA">JPA</BugCode>
 </MessageCollection>

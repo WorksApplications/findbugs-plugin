@@ -9,6 +9,9 @@ FindBugs plugin set from Works Applications.
 ## 0.0.2
 
 - added BrokenImmutableClassDetector
+- added LongIndexNameDetector
+- added LongTableNameDetector
+- added LongColumnNameDetector
 
 ## 0.0.1
 
