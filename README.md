@@ -8,7 +8,7 @@ FindBugs plugin set from Works Applications.
 
 ## 0.0.2
 
-- added BrokenImmutableClassDetectorTest
+- added BrokenImmutableClassDetector
 
 ## 0.0.1
 
