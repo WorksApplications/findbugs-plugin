@@ -39,4 +39,9 @@ public class ColumnNameLengthTest {
     public void testLongNameWithoutAnnotationParameter() throws Exception {
         assertBugReported(LongColumnNameWithoutAnnotationParameter.class, detector, bugReporter);
     }
+
+    @Test
+    public void testLongColumnNameByAnnotatedMethod() throws Exception {
+        assertBugReported(LongColumnNameByAnnotatedMethod.class, detector, bugReporter);
+    }
 }

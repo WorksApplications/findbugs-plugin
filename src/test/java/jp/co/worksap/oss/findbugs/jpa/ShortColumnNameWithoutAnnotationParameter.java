@@ -12,6 +12,8 @@ public class ShortColumnNameWithoutAnnotationParameter {
     @Column
     private String shortColumnNameNoAnnotationPrm;
 
+    private String another;
+
     public long getId() {
         return id;
     }
@@ -27,5 +29,14 @@ public class ShortColumnNameWithoutAnnotationParameter {
     public void setShortColumnNameNoAnnotationPrm(
             String shortColumnNameNoAnnotationPrm) {
         this.shortColumnNameNoAnnotationPrm = shortColumnNameNoAnnotationPrm;
+    }
+
+    @Column
+    public String getAnother() {
+        return another;
+    }
+
+    public void setAnother(String another) {
+        this.another = another;
     }
 }

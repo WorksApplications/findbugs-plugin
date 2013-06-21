@@ -3,6 +3,7 @@ package jp.co.worksap.oss.findbugs.jpa;
 import java.util.Map;
 
 import org.apache.bcel.classfile.ElementValue;
+import org.apache.commons.lang.IllegalClassException;
 
 import com.google.common.base.Objects;
 
@@ -39,12 +40,31 @@ public class LongColumnNameDetector extends AnnotationDetector {
             return;
         }
         ElementValue specifiedName = map.get("name");
+        final String columnName;
         if (specifiedName != null) {
-            detectLongName(specifiedName.stringifyValue());
+            columnName = specifiedName.stringifyValue();
+        } else if (visitingField()){
+            columnName = getFieldName();
+        } else if (visitingMethod()) {
+            columnName = trimPrefix(getMethodName());
         } else {
-            String columnName = getFieldName();
-            detectLongName(columnName);
+            throw new IllegalClassException("@Column should annotate method or field.");
         }
+        detectLongName(columnName);
+    }
+
+    /**
+     * <p>Remove prefix (&quot;get&quot; or &quot;is&quot;) from methodName.
+     */
+    private String trimPrefix(String methodName) {
+        if (methodName.startsWith("get")) {
+            return methodName.substring(3);
+        } else if (methodName.startsWith("is")) {
+            return methodName.substring(2);
+        }
+
+        throw new IllegalArgumentException(
+                String.format("methodName(%s) should start with 'get' or 'is'", methodName));
     }
 
     private void detectLongName(String tableName) {
