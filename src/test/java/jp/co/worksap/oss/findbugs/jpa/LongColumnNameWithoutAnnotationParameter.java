@@ -10,7 +10,7 @@ public class LongColumnNameWithoutAnnotationParameter {
     private long id;
 
     @Column
-    private String longColumnNameWitoutAnnotationParameter;
+    private String longColumnNameWithoutAnnotationParameter;
 
     public long getId() {
         return id;
@@ -20,13 +20,13 @@ public class LongColumnNameWithoutAnnotationParameter {
         this.id = id;
     }
 
-    public String getLongColumnNameWitoutAnnotationParameter() {
-        return longColumnNameWitoutAnnotationParameter;
+    public String getLongColumnNameWithoutAnnotationParameter() {
+        return longColumnNameWithoutAnnotationParameter;
     }
 
-    public void setLongColumnNameWitoutAnnotationParameter(
-            String longColumnNameWitoutAnnotationParameter) {
-        this.longColumnNameWitoutAnnotationParameter = longColumnNameWitoutAnnotationParameter;
+    public void setLongColumnNameWithoutAnnotationParameter(
+            String longColumnNameWithoutAnnotationParameter) {
+        this.longColumnNameWithoutAnnotationParameter = longColumnNameWithoutAnnotationParameter;
     }
 
 }
