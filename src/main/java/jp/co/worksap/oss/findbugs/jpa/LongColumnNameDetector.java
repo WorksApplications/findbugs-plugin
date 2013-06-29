@@ -48,16 +48,8 @@ public class LongColumnNameDetector extends AnnotationDetector {
         } else if (visitingField()){
             columnName = getFieldName();
         } else if (visitingMethod()) {
-            byte[] classByteCode = getClassContext().getJavaClass().getBytes();
-            ClassReader reader = new ClassReader(classByteCode);
             Method targetMethod = getMethod();
-
-            // note: bcel's #getSignature() method returns String like "(J)V", this is named as "descriptor" in the context of ASM.
-            // This is the reason why we call `targetMethod.getSignature()` to get value for `targetMethodDescriptor` argument.
-            VisitedFieldFinder visitedFieldFinder = new VisitedFieldFinder(targetMethod.getName(), targetMethod.getSignature());
-
-            reader.accept(visitedFieldFinder, 0);
-            columnName = visitedFieldFinder.getVisitedFieldName();
+            columnName = findFieldWhichisVisitedIn(targetMethod);
             if (columnName == null) {
                 throw new IllegalClassException(String.format(
                         "Method which is annotated with @Column should access to field, but %s#%s does not access.",
@@ -68,6 +60,18 @@ public class LongColumnNameDetector extends AnnotationDetector {
             throw new IllegalClassException("@Column should annotate method or field.");
         }
         detectLongName(columnName);
+    }
+
+    private String findFieldWhichisVisitedIn(Method targetMethod) {
+        byte[] classByteCode = getClassContext().getJavaClass().getBytes();
+        ClassReader reader = new ClassReader(classByteCode);
+
+        // note: bcel's #getSignature() method returns String like "(J)V", this is named as "descriptor" in the context of ASM.
+        // This is the reason why we call `targetMethod.getSignature()` to get value for `targetMethodDescriptor` argument.
+        VisitedFieldFinder visitedFieldFinder = new VisitedFieldFinder(targetMethod.getName(), targetMethod.getSignature());
+
+        reader.accept(visitedFieldFinder, 0);
+        return visitedFieldFinder.getVisitedFieldName();
     }
 
     private void detectLongName(String tableName) {

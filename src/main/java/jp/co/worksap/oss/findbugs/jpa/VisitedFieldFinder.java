@@ -10,9 +10,8 @@ import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.EmptyVisitor;
 
 /**
- * <p>Simple ClassVisitor implementation.</p>
- * <p>This class will parse bytecode of class, and find a field which is accessed in specified method.
- * To create instance, you need to provide name and descriptor to specify the target method.</p>
+ * <p>Simple ClassVisitor implementation to find visited field in the specified method.</p>
+ * <p>To create instance, you need to provide name and descriptor to specify the target method.</p>
  *
  * @author Kengo TODA
  */
