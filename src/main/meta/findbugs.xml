@@ -14,4 +14,20 @@
     category="CORRECTNESS" />
   <BugPattern type="BROKEN_IMMUTABILITY" abbrev="JSR305"
     category="CORRECTNESS" />
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongIndexNameDetector"
+  	speed="fast" hidden="false" />
+  <BugPattern type="LONG_INDEX_NAME" abbrev="JPA"
+    category="CORRECTNESS" />
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongTableNameDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="LONG_TABLE_NAME" abbrev="JPA"
+    category="CORRECTNESS" />
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.LongColumnNameDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="LONG_COLUMN_NAME" abbrev="JPA"
+    category="CORRECTNESS" />
+
 </FindbugsPlugin>
