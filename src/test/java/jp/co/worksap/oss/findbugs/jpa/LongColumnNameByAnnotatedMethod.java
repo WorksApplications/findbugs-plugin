@@ -20,7 +20,7 @@ public class LongColumnNameByAnnotatedMethod {
     }
 
     @Column
-    public String getLongColumnNameByAnnotatedMethod() {
+    public String getSomething() { // Plugin has to alert even if method name is short
         return longColumnNameByAnnotatedMethod;
     }
 

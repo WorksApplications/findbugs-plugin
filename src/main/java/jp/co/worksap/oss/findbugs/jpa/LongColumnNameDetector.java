@@ -3,7 +3,9 @@ package jp.co.worksap.oss.findbugs.jpa;
 import java.util.Map;
 
 import org.apache.bcel.classfile.ElementValue;
+import org.apache.bcel.classfile.Method;
 import org.apache.commons.lang.IllegalClassException;
+import org.objectweb.asm.ClassReader;
 
 import com.google.common.base.Objects;
 
@@ -46,25 +48,26 @@ public class LongColumnNameDetector extends AnnotationDetector {
         } else if (visitingField()){
             columnName = getFieldName();
         } else if (visitingMethod()) {
-            columnName = trimPrefix(getMethodName());
+            byte[] classByteCode = getClassContext().getJavaClass().getBytes();
+            ClassReader reader = new ClassReader(classByteCode);
+            Method targetMethod = getMethod();
+
+            // note: bcel's #getSignature() method returns String like "(J)V", this is named as "descriptor" in the context of ASM.
+            // This is the reason why we call `targetMethod.getSignature()` to get value for `targetMethodDescriptor` argument.
+            VisitedFieldFinder visitedFieldFinder = new VisitedFieldFinder(targetMethod.getName(), targetMethod.getSignature());
+
+            reader.accept(visitedFieldFinder, 0);
+            columnName = visitedFieldFinder.getVisitedFieldName();
+            if (columnName == null) {
+                throw new IllegalClassException(String.format(
+                        "Method which is annotated with @Column should access to field, but %s#%s does not access.",
+                        getClassContext().getClassDescriptor().getClassName().replace('/', '.'),
+                        targetMethod.getName()));
+            }
         } else {
             throw new IllegalClassException("@Column should annotate method or field.");
         }
         detectLongName(columnName);
-    }
-
-    /**
-     * <p>Remove prefix (&quot;get&quot; or &quot;is&quot;) from methodName.
-     */
-    private String trimPrefix(String methodName) {
-        if (methodName.startsWith("get")) {
-            return methodName.substring(3);
-        } else if (methodName.startsWith("is")) {
-            return methodName.substring(2);
-        }
-
-        throw new IllegalArgumentException(
-                String.format("methodName(%s) should start with 'get' or 'is'", methodName));
     }
 
     private void detectLongName(String tableName) {
