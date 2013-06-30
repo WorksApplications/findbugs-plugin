@@ -50,4 +50,14 @@ public class UnknownNullnessDetectorTest {
     public void testNoAnnotation() throws Exception {
         assertBugReported(NoAnnotation.class, detector, bugReporter);
     }
+
+    @Test
+    public void testAnnotatedReturnValue() throws Exception {
+        assertNoBugsReported(AnnotatedReturnValue.class, detector, bugReporter);
+    }
+
+    @Test
+    public void testUnannotatedReturnValue() throws Exception {
+        assertBugReported(UnannotatedReturnValue.class, detector, bugReporter);
+    }
 }
