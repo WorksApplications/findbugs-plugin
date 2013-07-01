@@ -1,11 +1,11 @@
 package jp.co.worksap.oss.findbugs.jsr305.nullness;
 
-import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.*;
-import jp.co.worksap.oss.findbugs.jsr305.nullness.UnknownNullnessDetector;
+import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.assertBugReported;
+import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.assertNoBugsReported;
+import static com.youdevise.fbplugins.tdd4fb.DetectorAssert.bugReporterForTesting;
 import jp.co.worksap.oss.findbugs.jsr305.nullness.annotatedpackage.AnnotatedPackage;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.umd.cs.findbugs.BugReporter;
@@ -35,7 +35,6 @@ public class UnknownNullnessDetectorTest {
         assertNoBugsReported(AnnotatedClass.class, detector, bugReporter);
     }
 
-    @Ignore("Cannot pass: It might stand on problem of FindBugs.")
     @Test
     public void testAnnotatedMethod() throws Exception {
         assertNoBugsReported(AnnotatedMethod.class, detector, bugReporter);
