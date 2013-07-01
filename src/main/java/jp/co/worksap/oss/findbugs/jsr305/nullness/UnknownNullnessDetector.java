@@ -20,6 +20,7 @@ import edu.umd.cs.findbugs.classfile.analysis.AnnotatedObject;
 
 public class UnknownNullnessDetector extends BytecodeScanningDetector {
 
+    private static java.lang.reflect.Method GET_DEFAULT_ANNOTATION;
     private final BugReporter bugReporter;
 
     public UnknownNullnessDetector(BugReporter bugReporter) {
@@ -59,19 +60,13 @@ public class UnknownNullnessDetector extends BytecodeScanningDetector {
     private TypeQualifierAnnotation findDefaultAnnotation(XMethod xMethod,
             TypeQualifierValue<?> nullness) {
         try {
-            java.lang.reflect.Method method = TypeQualifierApplications.class
-                    .getDeclaredMethod("getDefaultAnnotation",
-                            AnnotatedObject.class, TypeQualifierValue.class, ElementType.class);
-            method.setAccessible(true);
-            Object result = method.invoke(null, xMethod, nullness, ElementType.PARAMETER);
+            Object result = GET_DEFAULT_ANNOTATION.invoke(null, xMethod, nullness, ElementType.PARAMETER);
             if (result instanceof TypeQualifierAnnotation) {
                 return (TypeQualifierAnnotation) result;
             } else {
                 return null;
             }
         } catch (SecurityException e) {
-            throw new IllegalStateException(e);
-        } catch (NoSuchMethodException e) {
             throw new IllegalStateException(e);
         } catch (IllegalAccessException e) {
             throw new IllegalStateException(e);
@@ -89,6 +84,23 @@ public class UnknownNullnessDetector extends BytecodeScanningDetector {
         TypeQualifierAnnotation annotation = TypeQualifierApplications.getEffectiveTypeQualifierAnnotation(getXMethod(), nullness);
         if (annotation == null) {
             bugReporter.reportBug(new BugInstance("UNKNOWN_NULLNESS_OF_RETURNED_VALUE", NORMAL_PRIORITY).addClassAndMethod(this));
+        }
+    }
+
+    static {
+        cacheMethodForReflection();
+    }
+
+    private static void cacheMethodForReflection() throws IllegalStateException {
+        try {
+            GET_DEFAULT_ANNOTATION = TypeQualifierApplications.class
+                    .getDeclaredMethod("getDefaultAnnotation",
+                            AnnotatedObject.class, TypeQualifierValue.class, ElementType.class);
+            GET_DEFAULT_ANNOTATION.setAccessible(true);
+        } catch (SecurityException e) {
+            throw new IllegalStateException(e);
+        } catch (NoSuchMethodException e) {
+            throw new IllegalStateException(e);
         }
     }
 }
