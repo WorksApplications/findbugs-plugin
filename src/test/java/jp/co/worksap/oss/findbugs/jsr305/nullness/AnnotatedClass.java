@@ -4,5 +4,5 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 public class AnnotatedClass {
-    public void methodAnnotatedWithByDefault(Object value) {}
+    public void method(Object value) {}
 }
