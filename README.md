@@ -12,6 +12,7 @@ FindBugs plugin set from Works Applications.
 - added LongIndexNameDetector
 - added LongTableNameDetector
 - added LongColumnNameDetector
+- added UnknownNullnessDetector
 
 ## 0.0.1
 

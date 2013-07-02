@@ -59,6 +59,37 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jsr305.nullness.UnknownNullnessDetector">
+    <Details>
+      It is good to explain nullness of argument and returned value to help FindBugs detects potential problem.
+    </Details>
+  </Detector>
+
+  <BugPattern type="UNKNOWN_NULLNESS_OF_PARAMETER">
+    <ShortDescription>Nullness of this parameter is unknown.
+    </ShortDescription>
+    <LongDescription>Nullness of this parameter is unknown.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Nullness of this parameter is unknown.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <BugPattern type="UNKNOWN_NULLNESS_OF_RETURNED_VALUE">
+    <ShortDescription>Nullness of this returned value is unknown.
+    </ShortDescription>
+    <LongDescription>
+      Nullness of this returned value is unknown.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Nullness of this returned value is unknown.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.jpa.LongIndexNameDetector">
     <Details>
       Oracle database has limitation for length of index name.
