@@ -15,6 +15,13 @@
   <BugPattern type="BROKEN_IMMUTABILITY" abbrev="JSR305"
     category="CORRECTNESS" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.jsr305.nullness.UnknownNullnessDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="UNKNOWN_NULLNESS_OF_PARAMETER" abbrev="JSR305"
+    category="BAD_PRACTICE" />
+  <BugPattern type="UNKNOWN_NULLNESS_OF_RETURNED_VALUE" abbrev="JSR305"
+    category="BAD_PRACTICE" />
+
   <Detector class="jp.co.worksap.oss.findbugs.jpa.LongIndexNameDetector"
   	speed="fast" hidden="false" />
   <BugPattern type="LONG_INDEX_NAME" abbrev="JPA"
