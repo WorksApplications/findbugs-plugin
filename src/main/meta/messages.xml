@@ -150,7 +150,27 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector">
+    <Details>
+      This detector will find ignored test case which has no explanation about why it is ignored.
+    </Details>
+  </Detector>
+
+  <BugPattern type="UNDOCUMENTED_IGNORE">
+    <ShortDescription>To tell why test case is ignored, put explanation as a parameter.
+    </ShortDescription>
+    <LongDescription>
+      To tell why test case is ignored, put explanation as a parameter.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>To tell why test case is ignored, put explanation as a parameter.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
   <BugCode abbrev="JSR305">JSR305</BugCode>
   <BugCode abbrev="JPA">JPA</BugCode>
+  <BugCode addrev="JUNIT">JUnit</BugCode>
 </MessageCollection>
