@@ -37,4 +37,9 @@
   <BugPattern type="LONG_COLUMN_NAME" abbrev="JPA"
     category="CORRECTNESS" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="UNDOCUMENTED_IGNORE" abbrev="JUNIT"
+    category="BAD_PRACTICE" />
+
 </FindbugsPlugin>
