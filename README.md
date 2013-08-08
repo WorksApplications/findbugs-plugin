@@ -1,8 +1,28 @@
 # FindBugs Plugins
-FindBugs plugin set from Works Applications.
+FindBugs plugin set from Works Applications. Mainly designed to support J2EE technology and huge project.
 
 [![Build Status](https://secure.travis-ci.org/WorksApplications/findbugs-plugin.png)](http://travis-ci.org/WorksApplications/findbugs-plugin)
 
+# how to use with Maven
+
+To use this product, please configure your findbugs-maven-plugin like below.
+
+```xml
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>2.5.2</version>
+        <configuration>
+          <plugins>
+            <plugin>
+              <groupId>jp.co.worksap.oss</groupId>
+              <artifactId>findbugs-plugin</artifactId>
+              <version>0.0.2-SNAPSHOT</version>
+            </plugin>
+          </plugins>
+        </configuration>
+      </plugin>
+```
 
 # history
 
