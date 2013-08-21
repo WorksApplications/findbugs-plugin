@@ -150,6 +150,45 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitLengthDetector">
+    <Details>
+      The default value of length element (255) might be not enough in some case.
+      It is good to specify the value of length element clear, it tells that you have considered about it.
+    </Details>
+  </Detector>
+
+  <BugPattern type="IMPLICIT_LENGTH">
+    <ShortDescription>Specify length of column, its default (255) might be not enough.
+    </ShortDescription>
+    <LongDescription>
+      Specify length of column, its default (255) might be not enough.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Specify length of column, its default (255) might be not enough.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitNullnessDetector">
+    <Details>
+      It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </Details>
+  </Detector>
+
+  <BugPattern type="IMPLICIT_NULLNESS">
+    <ShortDescription>It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </ShortDescription>
+    <LongDescription>
+      It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>It is good to specify the value of nullable element clear, it tells that you have considered about it.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector">
     <Details>
       This detector will find ignored test case which has no explanation about why it is ignored.

@@ -34,6 +34,8 @@ To use this product, please configure your findbugs-maven-plugin like below.
 - added LongColumnNameDetector
 - added UnknownNullnessDetector
 - added UndocumentedIgnoreDetector
+- added ImplicitLengthDetector
+- added ImplicitNullnessDetector
 
 ## 0.0.1
 
