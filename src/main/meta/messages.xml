@@ -150,6 +150,26 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ColumnDefinitionDetector">
+    <Details>
+      To ensure that JPA entity does not depend on specific RDBMS,
+      it is good to check existence of columnDefinition property.
+    </Details>
+  </Detector>
+
+  <BugPattern type="USE_COLUMN_DEFINITION">
+    <ShortDescription>@Column annotation has columnDefinition property.
+    </ShortDescription>
+    <LongDescription>
+      @Column annotation has columnDefinition property, it might break RDBMS portability.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>@Column annotation has columnDefinition property, it might break RDBMS portability.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector">
     <Details>
       This detector will find ignored test case which has no explanation about why it is ignored.
