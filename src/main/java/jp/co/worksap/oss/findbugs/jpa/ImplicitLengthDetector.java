@@ -9,6 +9,16 @@ import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugReporter;
 
 public class ImplicitLengthDetector extends AbstractColumnDetector {
+    /**
+     * @see http://docs.oracle.com/cd/B28359_01/server.111/b28320/limits001.htm
+     */
+    private static final int MAX_LENGTH_OF_ORACLE_VARCHAR = 4000;
+    /**
+     * @see http://www-01.ibm.com/support/knowledgecenter/SSEPEK_10.0.0/com.ibm.db2z10.doc.intro/src/tpc/db2z_stringdatatypes.htm
+     */
+    private static final int MAX_LENGTH_OF_DB2_VARCHAR = 32704;
+
+    private static final int MAX_LENGTH_OF_VARCHAR = Math.min(MAX_LENGTH_OF_ORACLE_VARCHAR, MAX_LENGTH_OF_DB2_VARCHAR);
 
     public ImplicitLengthDetector(BugReporter bugReporter) {
         super(bugReporter);
@@ -17,20 +27,42 @@ public class ImplicitLengthDetector extends AbstractColumnDetector {
     @Override
     protected void verifyColumn(Type columnType,
             Map<String, ElementValue> elements) {
-        if (verifyColumnType(columnType) && !elements.containsKey("length")) {
+        if (! isTarget(columnType)) {
+            return;
+        }
+
+        if (! elements.containsKey("length")) {
             BugInstance bug = new BugInstance(this, "IMPLICIT_LENGTH", HIGH_PRIORITY);
             if (visitingMethod()) {
                 bug.addMethod(this);
             }
             getBugReporter().reportBug(bug);
+        } else {
+            ElementValue value = elements.get("length");
+            int lengthValue = Integer.parseInt(value.stringifyValue());
+
+            if (lengthValue <= 0) {
+                reportIllegalLength(lengthValue);
+            } else if (MAX_LENGTH_OF_VARCHAR < lengthValue) {
+                // TODO: consider that column type can be CLOB, then it might be greater than MAX_LENGTH_OF_VARCHAR
+                reportIllegalLength(lengthValue);
+            }
         }
+    }
+
+    private void reportIllegalLength(int lengthValue) {
+        BugInstance bug = new BugInstance(this, "ILLEGAL_LENGTH", HIGH_PRIORITY);
+        if (visitingMethod()) {
+            bug.addMethod(this);
+        }
+        getBugReporter().reportBug(bug);
     }
 
     /**
      * @param columnType
      * @return true if column type requires length property.
      */
-    private boolean verifyColumnType(Type columnType) {
+    private boolean isTarget(Type columnType) {
         // TODO true if target is annotated with @Lob
         return Type.STRING.equals(columnType);
     }

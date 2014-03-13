@@ -170,6 +170,19 @@
     </Details>
   </BugPattern>
 
+  <BugPattern type="ILLEGAL_LENGTH">
+    <ShortDescription>Specified length of column should be greater than 0, and smaller than 4,000 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Specified length of column ({1}) should be greater than 0, and smaller than 4,000 bytes.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>Specified length of column should be greater than 0, and smaller than 4,000 bytes.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitNullnessDetector">
     <Details>
       It is good to specify the value of nullable element clear, it tells that you have considered about it.
