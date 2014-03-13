@@ -61,7 +61,7 @@ public class ImplicitLengthDetector extends AbstractColumnDetector {
      * @return true if column type requires length property.
      */
     private boolean isTarget(Type columnType) {
-        return Type.STRING.equals(columnType) || Type.STRINGBUFFER.equals(columnType) || isVisitingLob();
+        return Type.STRING.equals(columnType) || Type.STRINGBUFFER.equals(columnType);
     }
 
 }
