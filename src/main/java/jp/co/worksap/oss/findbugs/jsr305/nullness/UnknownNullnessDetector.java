@@ -20,7 +20,7 @@ import edu.umd.cs.findbugs.classfile.analysis.AnnotatedObject;
 
 public class UnknownNullnessDetector extends BytecodeScanningDetector {
 
-    private static java.lang.reflect.Method GET_DEFAULT_ANNOTATION;
+    private static final java.lang.reflect.Method GET_DEFAULT_ANNOTATION;
     private final BugReporter bugReporter;
 
     public UnknownNullnessDetector(BugReporter bugReporter) {
@@ -88,10 +88,6 @@ public class UnknownNullnessDetector extends BytecodeScanningDetector {
     }
 
     static {
-        cacheMethodForReflection();
-    }
-
-    private static void cacheMethodForReflection() throws IllegalStateException {
         try {
             GET_DEFAULT_ANNOTATION = TypeQualifierApplications.class
                     .getDeclaredMethod("getDefaultAnnotation",
