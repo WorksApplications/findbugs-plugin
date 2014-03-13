@@ -56,7 +56,7 @@ abstract class AbstractColumnDetector extends AnnotationDetector {
 
         for (FieldOrMethod targetToSearch : targetListToSearch) {
             for (AnnotationEntry annotation : targetToSearch.getAnnotationEntries()) {
-                if (!Objects.equal(annotation.getAnnotationType(), "javax.persistence.Lob")) {
+                if (!Objects.equal(annotation.getAnnotationType(), "Ljavax/persistence/Lob;")) {
                     continue;
                 }
                 return true;
