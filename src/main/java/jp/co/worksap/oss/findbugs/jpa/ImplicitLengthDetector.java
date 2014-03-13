@@ -43,8 +43,7 @@ public class ImplicitLengthDetector extends AbstractColumnDetector {
 
             if (lengthValue <= 0) {
                 reportIllegalLength(lengthValue);
-            } else if (MAX_LENGTH_OF_VARCHAR < lengthValue) {
-                // TODO: consider that column type can be CLOB, then it might be greater than MAX_LENGTH_OF_VARCHAR
+            } else if (MAX_LENGTH_OF_VARCHAR < lengthValue && !isVisitingLob()) {
                 reportIllegalLength(lengthValue);
             }
         }
@@ -63,8 +62,7 @@ public class ImplicitLengthDetector extends AbstractColumnDetector {
      * @return true if column type requires length property.
      */
     private boolean isTarget(Type columnType) {
-        // TODO true if target is annotated with @Lob
-        return Type.STRING.equals(columnType);
+        return Type.STRING.equals(columnType) || isVisitingLob();
     }
 
 }

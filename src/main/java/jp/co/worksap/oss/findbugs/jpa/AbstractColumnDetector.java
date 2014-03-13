@@ -1,15 +1,19 @@
 package jp.co.worksap.oss.findbugs.jpa;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 
+import org.apache.bcel.classfile.AnnotationEntry;
 import org.apache.bcel.classfile.ElementValue;
 import org.apache.bcel.classfile.Field;
+import org.apache.bcel.classfile.FieldOrMethod;
 import org.apache.bcel.generic.Type;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
 
 import edu.umd.cs.findbugs.BugReporter;
 import edu.umd.cs.findbugs.bcel.AnnotationDetector;
@@ -35,7 +39,35 @@ abstract class AbstractColumnDetector extends AnnotationDetector {
             return;
         }
 
-        Type columnType;
+        Type columnType = findVisitingColumnType();
+        verifyColumn(columnType, map);
+    }
+
+    protected boolean isVisitingLob() {
+        List<FieldOrMethod> targetListToSearch = Lists.newArrayList();
+        if (visitingField()) {
+            targetListToSearch.add(getField());
+        } else if (visitingMethod()) {
+            targetListToSearch.add(getMethod());
+            targetListToSearch.add(findFieldInVisitingMethod());
+        } else {
+            throw new IllegalStateException("@Column should annotate field or method.");
+        }
+
+        for (FieldOrMethod targetToSearch : targetListToSearch) {
+            for (AnnotationEntry annotation : targetToSearch.getAnnotationEntries()) {
+                if (!Objects.equal(annotation.getAnnotationType(), "javax.persistence.Lob")) {
+                    continue;
+                }
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Type findVisitingColumnType() {
+        final Type columnType;
         if (visitingField()) {
             columnType = getField().getType();
         } else if (visitingMethod()) {
@@ -44,7 +76,7 @@ abstract class AbstractColumnDetector extends AnnotationDetector {
         } else {
             throw new IllegalStateException("@Column should annotate field or method.");
         }
-        verifyColumn(columnType, map);
+        return columnType;
     }
 
     @Nonnull
