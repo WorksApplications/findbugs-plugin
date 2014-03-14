@@ -2,6 +2,7 @@
 FindBugs plugin set from Works Applications. Mainly designed to support J2EE technology and huge project.
 
 [![Build Status](https://secure.travis-ci.org/WorksApplications/findbugs-plugin.png)](http://travis-ci.org/WorksApplications/findbugs-plugin)
+[![Coverage Status](https://coveralls.io/repos/WorksApplications/findbugs-plugin/badge.png)](https://coveralls.io/r/WorksApplications/findbugs-plugin)
 
 # how to use with Maven
 
