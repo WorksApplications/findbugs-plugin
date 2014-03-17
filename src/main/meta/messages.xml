@@ -222,6 +222,27 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.NullablePrimitiveDetector">
+    <Details>
+      This detector will find illegal nullable property of primitive type.
+      When developer changes type of field from primitive type to reference type (ex. from int to Integer),
+      he/she might forget to care about this property. This detector helps developer to find this human-error.
+    </Details>
+  </Detector>
+
+  <BugPattern type="NULLABLE_PRIMITIVE">
+    <ShortDescription>Nullable property of primitive type should be false.
+    </ShortDescription>
+    <LongDescription>
+      Nullable property of primitive type should be false.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>Nullable property of primitive type should be false.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector">
     <Details>
       This detector will find ignored test case which has no explanation about why it is ignored.

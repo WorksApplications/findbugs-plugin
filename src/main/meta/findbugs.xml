@@ -54,6 +54,11 @@
   <BugPattern type="USE_COLUMN_DEFINITION" abbrev="JPA"
     category="BAD_PRACTICE" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.NullablePrimitiveDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="NULLABLE_PRIMITIVE" abbrev="JPA"
+    category="CORRECTNESS" />
+
   <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector"
     speed="fast" hidden="false" />
   <BugPattern type="UNDOCUMENTED_IGNORE" abbrev="JUNIT"

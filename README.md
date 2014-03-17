@@ -37,6 +37,7 @@ To use this product, please configure your findbugs-maven-plugin like below.
 - added ImplicitLengthDetector
 - added ImplicitNullnessDetector
 - added ColumnDefinitionDetector
+- added NullablePrimitiveDetector
 
 ## 0.0.1
 
