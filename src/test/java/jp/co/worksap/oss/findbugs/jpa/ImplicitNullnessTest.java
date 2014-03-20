@@ -20,13 +20,13 @@ public class ImplicitNullnessTest {
     }
 
     @Test
-    public void testImplicitNullness() throws Exception {
+    public void testExplicitNullness() throws Exception {
         assertNoBugsReported(ColumnWithNullable.class, detector,
                 bugReporter);
     }
 
     @Test
-    public void testExplicitNullness() throws Exception {
+    public void testImplicitNullness() throws Exception {
         assertBugReported(ColumnWithoutElement.class, detector,
                 bugReporter);
     }
