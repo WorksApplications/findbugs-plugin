@@ -37,6 +37,18 @@
   <BugPattern type="LONG_COLUMN_NAME" abbrev="JPA"
     category="CORRECTNESS" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitLengthDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="IMPLICIT_LENGTH" abbrev="JPA"
+    category="BAD_PRACTICE" />
+  <BugPattern type="ILLEGAL_LENGTH" abbrev="JPA"
+    category="CORRECTNESS" />
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitNullnessDetector"
+    speed="fast" hidden="false" />
+  <BugPattern type="IMPLICIT_NULLNESS" abbrev="JPA"
+    category="BAD_PRACTICE" />
+
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ColumnDefinitionDetector"
     speed="fast" hidden="false" />
   <BugPattern type="USE_COLUMN_DEFINITION" abbrev="JPA"

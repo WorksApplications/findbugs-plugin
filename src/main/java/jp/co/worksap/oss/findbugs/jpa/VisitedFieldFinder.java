@@ -6,8 +6,12 @@ import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import org.apache.bcel.classfile.FieldOrMethod;
+import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.commons.EmptyVisitor;
+
+import edu.umd.cs.findbugs.bcel.AnnotationDetector;
 
 /**
  * <p>Simple ClassVisitor implementation to find visited field in the specified method.</p>
@@ -28,7 +32,7 @@ final class VisitedFieldFinder extends EmptyVisitor {
 
     @CheckReturnValue
     @Nullable
-    String getVisitedFieldName() {
+    private String getVisitedFieldName() {
         return visitedFieldName;
     }
 
@@ -48,4 +52,18 @@ final class VisitedFieldFinder extends EmptyVisitor {
         this.visitedFieldName = name;
     }
 
+    @Nullable
+    @CheckReturnValue
+    static String findFieldWhichisVisitedInVisitingMethod(AnnotationDetector detector) {
+        byte[] classByteCode = detector.getClassContext().getJavaClass().getBytes();
+        ClassReader reader = new ClassReader(classByteCode);
+
+        FieldOrMethod targetMethod = detector.getMethod();
+        // note: bcel's #getSignature() method returns String like "(J)V", this is named as "descriptor" in the context of ASM.
+        // This is the reason why we call `targetMethod.getSignature()` to get value for `targetMethodDescriptor` argument.
+        VisitedFieldFinder visitedFieldFinder = new VisitedFieldFinder(targetMethod .getName(), targetMethod.getSignature());
+
+        reader.accept(visitedFieldFinder, 0);
+        return visitedFieldFinder.getVisitedFieldName();
+    }
 }

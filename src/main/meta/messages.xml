@@ -150,6 +150,60 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitLengthDetector">
+    <Details>
+      The default value of length element (255) might be not enough in some case.
+      It is good to specify the value of length element clear, it tells that you have considered about it.
+    </Details>
+  </Detector>
+
+  <BugPattern type="IMPLICIT_LENGTH">
+    <ShortDescription>Specify length of column, its default (255) might be not enough.
+    </ShortDescription>
+    <LongDescription>
+      Specify length of column, its default (255) might be not enough.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>Specify length of column, its default (255) might be not enough.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <BugPattern type="ILLEGAL_LENGTH">
+    <ShortDescription>Specified length of column should be greater than 0, and smaller than 4,000 bytes.
+    </ShortDescription>
+    <LongDescription>
+      Specified length of column ({1}) should be greater than 0, and smaller than 4,000 bytes.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>Specified length of column should be greater than 0, and smaller than 4,000 bytes.</p>
+    <p>Oracle&#39;s maximum varchar size is 4000 bytes, and DB2&#39;s is 32704 bytes.
+    To keep portability of your product, it is better to shorten length to 4000 bytes, or to use @Lob annotation to use CLOB.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitNullnessDetector">
+    <Details>
+      It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </Details>
+  </Detector>
+
+  <BugPattern type="IMPLICIT_NULLNESS">
+    <ShortDescription>It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </ShortDescription>
+    <LongDescription>
+      It is good to specify the value of nullable element clear, it tells that you have considered about it.
+    </LongDescription>
+    <Details>  
+  <![CDATA[
+    <p>It is good to specify the value of nullable element clear, it tells that you have considered about it.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ColumnDefinitionDetector">
     <Details>
       To ensure that JPA entity does not depend on specific RDBMS,
