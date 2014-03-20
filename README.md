@@ -18,7 +18,7 @@ To use this product, please configure your findbugs-maven-plugin like below.
             <plugin>
               <groupId>jp.co.worksap.oss</groupId>
               <artifactId>findbugs-plugin</artifactId>
-              <version>0.0.2-SNAPSHOT</version>
+              <version>0.0.2</version>
             </plugin>
           </plugins>
         </configuration>
