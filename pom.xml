@@ -7,7 +7,7 @@
     <version>1.0.2</version>
   </parent>
   <artifactId>findbugs-plugin</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <url>https://github.com/WorksApplications/findbugs-plugin</url>
   <description>WorksApplications Findbugs plugin set</description>
   <scm>
@@ -130,7 +130,7 @@
                   </goals>
                 </pluginExecutionFilter>
                 <action>
-                  <ignore></ignore>
+                  <ignore />
                 </action>
               </pluginExecution>
             </pluginExecutions>
