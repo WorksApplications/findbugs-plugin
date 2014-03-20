@@ -179,6 +179,8 @@
     <Details>
   <![CDATA[
     <p>Specified length of column should be greater than 0, and smaller than 4,000 bytes.</p>
+    <p>Oracle&#39;s maximum varchar size is 4000 bytes, and DB2&#39;s is 32704 bytes.
+    To keep portability of your product, it is better to shorten length to 4000 bytes, or to use @Lob annotation to use CLOB.</p>
   ]]>
     </Details>
   </BugPattern>
