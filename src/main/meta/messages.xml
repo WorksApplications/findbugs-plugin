@@ -20,7 +20,7 @@
     <LongDescription>we can not use System.out and System.err, please use log to
       output information
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>System.out and System.err are forbidden, please use log</p>
   ]]>
@@ -39,7 +39,7 @@
     </ShortDescription>
     <LongDescription>To prevent from bad extending, immutable class should be final.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>To prevent from bad extending, immutable class should be final.</p>
   ]]>
@@ -52,7 +52,7 @@
     <LongDescription>
       Field ({1}) in class ({2}) should be final to make a class ({3}) immutable.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Field of immutable class should be final.</p>
   ]]>
@@ -70,7 +70,7 @@
     </ShortDescription>
     <LongDescription>Nullness of this parameter is unknown.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Nullness of this parameter is unknown.</p>
   ]]>
@@ -83,7 +83,7 @@
     <LongDescription>
       Nullness of this returned value is unknown.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Nullness of this returned value is unknown.</p>
   ]]>
@@ -103,7 +103,7 @@
     <LongDescription>
       Index name should be shorter than or equal to 30 bytes.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Index name should be shorter than or equal to 30 bytes.</p>
   ]]>
@@ -123,7 +123,7 @@
     <LongDescription>
       Table name should be shorter than or equal to 30 bytes.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Table name should be shorter than or equal to 30 bytes.</p>
   ]]>
@@ -143,7 +143,7 @@
     <LongDescription>
       Column name should be shorter than or equal to 30 bytes.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Column name should be shorter than or equal to 30 bytes.</p>
   ]]>
@@ -163,7 +163,7 @@
     <LongDescription>
       Specify length of column, its default (255) might be not enough.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>Specify length of column, its default (255) might be not enough.</p>
   ]]>
@@ -197,7 +197,7 @@
     <LongDescription>
       It is good to specify the value of nullable element clear, it tells that you have considered about it.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>It is good to specify the value of nullable element clear, it tells that you have considered about it.</p>
   ]]>
@@ -217,9 +217,30 @@
     <LongDescription>
       @Column annotation has columnDefinition property, it might break RDBMS portability.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>@Column annotation has columnDefinition property, it might break RDBMS portability.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.jpa.NullablePrimitiveDetector">
+    <Details>
+      This detector will find illegal nullable property of primitive type.
+      When developer changes type of field from primitive type to reference type (ex. from int to Integer),
+      he/she might forget to care about this property. This detector helps developer to find this human-error.
+    </Details>
+  </Detector>
+
+  <BugPattern type="NULLABLE_PRIMITIVE">
+    <ShortDescription>Nullable property of primitive type should be false.
+    </ShortDescription>
+    <LongDescription>
+      Nullable property of primitive type should be false.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>Nullable property of primitive type should be false.</p>
   ]]>
     </Details>
   </BugPattern>
@@ -236,7 +257,7 @@
     <LongDescription>
       To tell why test case is ignored, put explanation as a parameter.
     </LongDescription>
-    <Details>  
+    <Details>
   <![CDATA[
     <p>To tell why test case is ignored, put explanation as a parameter.</p>
   ]]>
