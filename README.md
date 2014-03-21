@@ -18,7 +18,7 @@ To use this product, please configure your findbugs-maven-plugin like below.
             <plugin>
               <groupId>jp.co.worksap.oss</groupId>
               <artifactId>findbugs-plugin</artifactId>
-              <version>0.0.2</version>
+              <version>0.0.3-SNAPSHOT</version>
             </plugin>
           </plugins>
         </configuration>
@@ -26,6 +26,10 @@ To use this product, please configure your findbugs-maven-plugin like below.
 ```
 
 # history
+
+## 0.0.3
+
+- upgraded JDK from 1.6 to 1.7
 
 ## 0.0.2
 
