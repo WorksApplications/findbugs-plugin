@@ -4,63 +4,63 @@
   provider="Works Applications" website="https://github.com/WorksApplications/findbugs-plugin">
 
   <Detector class="jp.co.worksap.oss.findbugs.ForbiddenSystemClass"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="FORBIDDEN_SYSTEM" />
   <BugPattern type="FORBIDDEN_SYSTEM" abbrev="SYS"
     category="BAD_PRACTICE" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jsr305.BrokenImmutableClassDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="IMMUTABLE_CLASS_SHOULD_BE_FINAL,BROKEN_IMMUTABILITY" />
   <BugPattern type="IMMUTABLE_CLASS_SHOULD_BE_FINAL" abbrev="JSR305"
     category="CORRECTNESS" />
   <BugPattern type="BROKEN_IMMUTABILITY" abbrev="JSR305"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jsr305.nullness.UnknownNullnessDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="UNKNOWN_NULLNESS_OF_PARAMETER,UNKNOWN_NULLNESS_OF_RETURNED_VALUE" />
   <BugPattern type="UNKNOWN_NULLNESS_OF_PARAMETER" abbrev="JSR305"
     category="BAD_PRACTICE" />
   <BugPattern type="UNKNOWN_NULLNESS_OF_RETURNED_VALUE" abbrev="JSR305"
     category="BAD_PRACTICE" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.LongIndexNameDetector"
-  	speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="LONG_INDEX_NAME" />
   <BugPattern type="LONG_INDEX_NAME" abbrev="JPA"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.LongTableNameDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="LONG_TABLE_NAME" />
   <BugPattern type="LONG_TABLE_NAME" abbrev="JPA"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.LongColumnNameDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="LONG_COLUMN_NAME" />
   <BugPattern type="LONG_COLUMN_NAME" abbrev="JPA"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitLengthDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="IMPLICIT_LENGTH,ILLEGAL_LENGTH" />
   <BugPattern type="IMPLICIT_LENGTH" abbrev="JPA"
     category="BAD_PRACTICE" />
   <BugPattern type="ILLEGAL_LENGTH" abbrev="JPA"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ImplicitNullnessDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="IMPLICIT_NULLNESS" />
   <BugPattern type="IMPLICIT_NULLNESS" abbrev="JPA"
     category="BAD_PRACTICE" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.ColumnDefinitionDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="USE_COLUMN_DEFINITION" />
   <BugPattern type="USE_COLUMN_DEFINITION" abbrev="JPA"
     category="BAD_PRACTICE" />
 
   <Detector class="jp.co.worksap.oss.findbugs.jpa.NullablePrimitiveDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="NULLABLE_PRIMITIVE" />
   <BugPattern type="NULLABLE_PRIMITIVE" abbrev="JPA"
     category="CORRECTNESS" />
 
   <Detector class="jp.co.worksap.oss.findbugs.junit.UndocumentedIgnoreDetector"
-    speed="fast" hidden="false" />
+    speed="fast" hidden="false" reports="UNDOCUMENTED_IGNORE" />
   <BugPattern type="UNDOCUMENTED_IGNORE" abbrev="JUNIT"
     category="BAD_PRACTICE" />
 
