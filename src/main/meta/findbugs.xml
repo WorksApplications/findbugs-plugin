@@ -64,4 +64,9 @@
   <BugPattern type="UNDOCUMENTED_IGNORE" abbrev="JUNIT"
     category="BAD_PRACTICE" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.guava.UnexpectedAccessDetector"
+    speed="fast" hidden="false" reports="GUAVA_UNEXPECTED_ACCESS_TO_VISIBLE_FOR_TESTING" />
+  <BugPattern type="GUAVA_UNEXPECTED_ACCESS_TO_VISIBLE_FOR_TESTING" abbrev="GUAVA"
+    category="CORRECTNESS" />
+
 </FindbugsPlugin>
