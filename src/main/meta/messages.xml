@@ -287,9 +287,29 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.findbugs.UndocumentedSuppressFBWarningsDetector">
+    <Details>
+      This detector will find suppressed FindBugs warning which has no justification about why it is suppressed.
+    </Details>
+  </Detector>
+
+  <BugPattern type="FINDBUGS_UNDOCUMENTED_SUPPRESS_WARNINGS">
+    <ShortDescription>To tell why this FindBugs warning is suppressed, put justification as a parameter.
+    </ShortDescription>
+    <LongDescription>
+      To tell why this FindBugs warning is suppressed, put justification as a parameter.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>To tell why this FindBugs warning is suppressed, put justification as a parameter.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
   <BugCode abbrev="JSR305">JSR305</BugCode>
   <BugCode abbrev="JPA">JPA</BugCode>
   <BugCode addrev="JUNIT">JUnit</BugCode>
   <BugCode addrev="GUAVA">Google Guava</BugCode>
+  <BugCode addrev="FINDBUGS">FindBugs</BugCode>
 </MessageCollection>

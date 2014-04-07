@@ -30,6 +30,7 @@ To use this product, please configure your findbugs-maven-plugin like below.
 ## 0.0.3
 
 - added UnexpectedAccessDetector
+- added UndocumentedSuppressFBWarningsDetector
 
 ## 0.0.2
 
