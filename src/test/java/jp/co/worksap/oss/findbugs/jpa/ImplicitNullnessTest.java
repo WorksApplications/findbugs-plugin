@@ -29,5 +29,7 @@ public class ImplicitNullnessTest {
     public void testImplicitNullness() throws Exception {
         assertBugReported(ColumnWithoutElement.class, detector,
                 bugReporter);
+        assertBugReported(GetterWithoutElement.class, detector,
+                bugReporter);
     }
 }

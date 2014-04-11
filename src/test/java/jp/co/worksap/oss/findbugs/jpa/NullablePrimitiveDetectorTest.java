@@ -23,10 +23,11 @@ public class NullablePrimitiveDetectorTest {
     @Test
     public void testNullableObject() throws Exception {
         assertNoBugsReported(UseColumnDefinition.class, detector, bugReporter);
+        assertNoBugsReported(ColumnWithoutElement.class, detector, bugReporter);
     }
 
     @Test
-    public void testNullableInt() throws Exception {
+    public void testNullablePrimitive() throws Exception {
         assertBugReported(NullableBooleanColumn.class, detector,
                 bugReporter, ofType("NULLABLE_PRIMITIVE"));
         assertBugReported(NullableByteColumn.class, detector,
@@ -40,6 +41,8 @@ public class NullablePrimitiveDetectorTest {
         assertBugReported(NullableFloatColumn.class, detector,
                 bugReporter, ofType("NULLABLE_PRIMITIVE"));
         assertBugReported(NullableDoubleColumn.class, detector,
+                bugReporter, ofType("NULLABLE_PRIMITIVE"));
+        assertBugReported(NullableBooleanGetter.class, detector,
                 bugReporter, ofType("NULLABLE_PRIMITIVE"));
     }
 
