@@ -31,6 +31,7 @@ To use this product, please configure your findbugs-maven-plugin like below.
 
 - added UnexpectedAccessDetector
 - added UndocumentedSuppressFBWarningsDetector
+- upgraded JDK from 1.6 to 1.7
 
 ## 0.0.2
 

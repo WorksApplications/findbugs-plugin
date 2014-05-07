@@ -30,11 +30,15 @@ public class ImplicitLengthTest {
     public void testTooLongLength() throws Exception {
         assertBugReported(ColumnWithTooLongLength.class, detector,
                 bugReporter, ofType("ILLEGAL_LENGTH"));
+        assertBugReported(GetterWithTooLongLength.class, detector,
+                bugReporter, ofType("ILLEGAL_LENGTH"));
     }
 
     @Test
     public void testLongLengthWithLob() throws Exception {
         assertNoBugsReported(ColumnWithLongLengthAndLob.class, detector,
+                bugReporter);
+        assertNoBugsReported(GetterWithLongLengthAndLob.class, detector,
                 bugReporter);
     }
 
@@ -47,6 +51,8 @@ public class ImplicitLengthTest {
     @Test
     public void testImplicitLength() throws Exception {
         assertBugReported(ColumnWithoutElement.class, detector,
+                bugReporter, ofType("IMPLICIT_LENGTH"));
+        assertBugReported(GetterWithoutElement.class, detector,
                 bugReporter, ofType("IMPLICIT_LENGTH"));
     }
 }

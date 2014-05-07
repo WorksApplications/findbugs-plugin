@@ -66,9 +66,7 @@ public class UnknownNullnessDetector extends BytecodeScanningDetector {
             } else {
                 return null;
             }
-        } catch (SecurityException e) {
-            throw new IllegalStateException(e);
-        } catch (IllegalAccessException e) {
+        } catch (SecurityException | IllegalAccessException e) {
             throw new IllegalStateException(e);
         } catch (InvocationTargetException e) {
             throw new IllegalArgumentException(e);
@@ -93,9 +91,7 @@ public class UnknownNullnessDetector extends BytecodeScanningDetector {
                     .getDeclaredMethod("getDefaultAnnotation",
                             AnnotatedObject.class, TypeQualifierValue.class, ElementType.class);
             GET_DEFAULT_ANNOTATION.setAccessible(true);
-        } catch (SecurityException e) {
-            throw new IllegalStateException(e);
-        } catch (NoSuchMethodException e) {
+        } catch (SecurityException | NoSuchMethodException e) {
             throw new IllegalStateException(e);
         }
     }
