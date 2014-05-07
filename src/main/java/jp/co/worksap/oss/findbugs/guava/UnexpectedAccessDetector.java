@@ -49,7 +49,8 @@ public class UnexpectedAccessDetector extends BytecodeScanningDetector {
             try {
                 verifyVisibility(invokedClass, invokedMethod);
             } catch (ClassNotFoundException e) {
-                throw new IllegalStateException(e);
+                String message = String.format("Detector could not find %s, you should add this class into CLASSPATH", invokedClass.getDottedClassName());
+                bugReporter.logError(message, e);
             }
         }
     }
