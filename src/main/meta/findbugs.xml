@@ -64,4 +64,14 @@
   <BugPattern type="UNDOCUMENTED_IGNORE" abbrev="JUNIT"
     category="BAD_PRACTICE" />
 
+  <Detector class="jp.co.worksap.oss.findbugs.guava.UnexpectedAccessDetector"
+    speed="fast" hidden="false" reports="GUAVA_UNEXPECTED_ACCESS_TO_VISIBLE_FOR_TESTING" />
+  <BugPattern type="GUAVA_UNEXPECTED_ACCESS_TO_VISIBLE_FOR_TESTING" abbrev="GUAVA"
+    category="CORRECTNESS" />
+
+  <Detector class="jp.co.worksap.oss.findbugs.findbugs.UndocumentedSuppressFBWarningsDetector"
+    speed="fast" hidden="false" reports="FINDBUGS_UNDOCUMENTED_SUPPRESS_WARNINGS" />
+  <BugPattern type="FINDBUGS_UNDOCUMENTED_SUPPRESS_WARNINGS" abbrev="FINDBUGS"
+    category="BAD_PRACTICE" />
+
 </FindbugsPlugin>

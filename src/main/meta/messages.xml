@@ -264,8 +264,52 @@
     </Details>
   </BugPattern>
 
+  <Detector class="jp.co.worksap.oss.findbugs.guava.UnexpectedAccessDetector">
+    <Details>
+    </Details>
+  </Detector>
+
+  <BugPattern type="GUAVA_UNEXPECTED_ACCESS_TO_VISIBLE_FOR_TESTING">
+    <ShortDescription>
+      You cannot access to package-private method which is annotated by @VisibleForTesting.
+    </ShortDescription>
+    <LongDescription>
+      You cannot access to package-private method which is annotated by @VisibleForTesting.
+      This annotation means that visibility was widened only for test code, so your implementation code
+      shouldn't access to method which is annotated by this annotation.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+      <p>You cannot access to package-private method which is annotated by @VisibleForTesting.</p>
+      <p>This annotation means that visibility was widened only for test code, so your implementation code
+      shouldn't access to method which is annotated by this annotation.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
+  <Detector class="jp.co.worksap.oss.findbugs.findbugs.UndocumentedSuppressFBWarningsDetector">
+    <Details>
+      This detector will find suppressed FindBugs warning which has no justification about why it is suppressed.
+    </Details>
+  </Detector>
+
+  <BugPattern type="FINDBUGS_UNDOCUMENTED_SUPPRESS_WARNINGS">
+    <ShortDescription>To tell why this FindBugs warning is suppressed, put justification as a parameter.
+    </ShortDescription>
+    <LongDescription>
+      To tell why this FindBugs warning is suppressed, put justification as a parameter.
+    </LongDescription>
+    <Details>
+  <![CDATA[
+    <p>To tell why this FindBugs warning is suppressed, put justification as a parameter.</p>
+  ]]>
+    </Details>
+  </BugPattern>
+
   <BugCode abbrev="SYS">SYS</BugCode>
   <BugCode abbrev="JSR305">JSR305</BugCode>
   <BugCode abbrev="JPA">JPA</BugCode>
   <BugCode addrev="JUNIT">JUnit</BugCode>
+  <BugCode addrev="GUAVA">Google Guava</BugCode>
+  <BugCode addrev="FINDBUGS">FindBugs</BugCode>
 </MessageCollection>
