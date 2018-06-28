@@ -4,7 +4,7 @@
   <parent>
     <groupId>jp.co.worksap.oss</groupId>
     <artifactId>worksap-parent</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.4</version>
   </parent>
   <artifactId>findbugs-plugin</artifactId>
   <version>0.0.3-SNAPSHOT</version>
